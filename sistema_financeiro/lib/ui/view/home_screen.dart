@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sistema_financeiro/ui/widgets/summary_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,41 +9,40 @@ class HomeScreen extends StatefulWidget {
 }
 
 class __HomeScreenStateState extends State<HomeScreen> {
-    bool _isFilterVisible = false;
+  bool _isFilterVisible = false;
 
-    void _toggleFiltterVisibility(){
-      setState(() {
-        _isFilterVisible = !_isFilterVisible;
-      });
-    }
+  void _toggleFiltterVisibility() {
+    setState(() {
+      _isFilterVisible = !_isFilterVisible;
+    });
+  }
 
-    Widget build(BuildContext context){
-      final colorScheme = Theme.of(context).colorScheme;
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
 
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Controle financeiro',
-            style: TextStyle(fontWeight: FontWeight.bold)
-          ),
-          backgroundColor: colorScheme.primary,
-          foregroundColor: colorScheme.onPrimary,
-          elevation: 0,
-          actions: [
-            IconButton(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Controle financeiro',
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+        elevation: 0,
+        actions: [
+          IconButton(
               icon: Icon(
                 _isFilterVisible ? Icons.filter_list_off : Icons.filter_list,
               ),
               onPressed: _toggleFiltterVisibility,
-              tooltip: _isFilterVisible ? 'Ocultar Filtros' : 'Mostrar Filtros'
-            ),
-            IconButton(
-              icon: const Icon(Icons.receipt_long),
-              onPressed: () {},
-              tooltip: 'Visualizar todas as transasções',
-            ),
-          ],
-        )
-      );
-    }
+              tooltip:
+                  _isFilterVisible ? 'Ocultar Filtros' : 'Mostrar Filtros'),
+          IconButton(
+            icon: const Icon(Icons.receipt_long),
+            onPressed: () {},
+            tooltip: 'Visualizar todas as transasções',
+          ),
+        ],
+      ),
+      body: SummaryCard(totalIncome: 10, totalExpense: 100, balance: 10),
+    );
   }
+}

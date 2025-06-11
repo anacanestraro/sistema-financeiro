@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sistema_financeiro/util/formatter.dart';
+import 'package:sistema_financeiro/common/util/formatter.dart';
 
 class SummaryCard extends StatelessWidget {
   final double totalIncome;
